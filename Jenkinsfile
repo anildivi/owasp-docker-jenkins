@@ -57,7 +57,7 @@ pipeline {
                         sh """
                             ${dcHome}/bin/dependency-check.sh \
                             --project "OWASP-Jenkins" \
-                            --scan . \
+                            --scan ${WORKSPACE} \
                             --out dependency-check-report \
                             --format HTML \
                             --format XML \
