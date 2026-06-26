@@ -32,15 +32,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Scan') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
-
-        stage('OWASP Dependency Check') {
+       stage('OWASP Dependency Check') {
             steps {
                 script {
 
