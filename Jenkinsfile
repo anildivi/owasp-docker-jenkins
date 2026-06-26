@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'
+        maven 'Maven3'
     }
 
     environment {
@@ -47,7 +47,7 @@ pipeline {
                     def dcHome = tool 'DependencyCheck'
 
                     withCredentials([
-                        string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')
+                        string(credentialsId: 'NVD_API_KEY', variable: 'NVD_API_KEY')
                     ]) {
 
                         sh '''
