@@ -39,23 +39,19 @@ pipeline {
                     def dcHome = tool 'DependencyCheck'
 
                     withCredentials([
-                        string(credentialsId: 'NVD_API_KEY', variable: 'NVD_API_KEY')
-                    ]) {
+    string(credentialsId: 'NVD_API_KEY', variable: 'NVD_API_KEY')
+]) {
 
-                        sh '''
-                            mkdir -p dependency-check-report
-                        '''
-
-                        sh """
-                            ${dcHome}/bin/dependency-check.sh \
-                            --project "OWASP-Jenkins" \
-                            --scan ${WORKSPACE} \
-                            --out dependency-check-report \
-                            --format HTML \
-                            --format XML \
-                            --nvdApiKey \$NVD_API_KEY
-                        """
-                    }
+    sh """
+        /opt/dependency-check/bin/dependency-check.sh \
+        --project "OWASP-Jenkins" \
+        --scan ${WORKSPACE} \
+        --out dependency-check-report \
+        --format HTML \
+        --format XML \
+        --nvdApiKey \$NVD_API_KEY
+    """
+}
                 }
             }
         }
